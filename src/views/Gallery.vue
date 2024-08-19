@@ -9,9 +9,8 @@
       </div>
     </div>
     <div class="list">
-      <RecipeCard />
-      <RecipeCard />
-      <RecipeCard />
+      <RecipeCard v-for="recipe in recipe" :details="recipe "/>
+     
     </div>
   </div>
 </template>
@@ -20,20 +19,26 @@
 import { defineComponent } from "vue";
 import RecipeCard from "../components/RecipeCard.vue";
 import http from '../httpCommon.ts'
-import {onMounted } from 'vue'
+import {onMounted, ref} from 'vue'
 export default defineComponent({
   name: "Gallery",
   components: {
     RecipeCard,
   },
   setup(){
+
+    const recipe = ref ([])
     onMounted (()=>{
 
-http.get('/search.php?s=Arrabiata').then((res)=>{
+http.get('/filter.php?a=Canadian').then((res)=>{
   console.log('res',res)
+  recipe.value=res.data.meals
 })
 
-})
+});
+return {
+  recipe,
+}
   }
 
 
