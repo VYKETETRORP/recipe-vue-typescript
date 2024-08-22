@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import RecipeCard from "../components/RecipeCard.vue";
-import http from '../httpCommon.ts'
+import http from '../httpCommon'
 import {onMounted, ref} from 'vue'
 export default defineComponent({
   name: "Gallery",

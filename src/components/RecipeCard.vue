@@ -1,15 +1,32 @@
-<template>
-  <div class="card">
+<!-- <nav>
+  <router-link :to="{ name: 'RecipeDetail', params: { id: details.idMeal } }">
+      <div class="card">
     <img :src="details.strMealThumb" alt="" class="thumbnail" />
     <div>{{ details.strMeal }}</div>
   </div>
+  </router-link>
+</nav>
+
+  <router-view/> -->
+<template>
+
+
+
+    <router-link :to="{ name: 'RecipeDetail', params: {  id: details.idMeal} }">
+      <div class="card">
+        <img :src="details.strMealThumb" alt="" class="thumbnail" />
+        <div>{{ details.strMeal }}</div>
+      </div>
+    </router-link>
+
+    <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  name: 'RecipeCard',
+  name: "RecipeCard",
   props: {
     details: {
       type: Object as PropType<{ strMealThumb: string }>,
@@ -32,7 +49,7 @@ export default defineComponent({
   border-radius: 5px;
   padding: 10px;
 }
-.thumbnail{
+.thumbnail {
   height: 180px;
   width: 100%;
   object-fit: cover;
